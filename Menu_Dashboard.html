@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Menu - Dark Blue Theme</title>
+    <!-- Custom CSS Terpisah -->
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Styling tambahan khusus tata letak Dashboard dengan Sidebar */
+        body {
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: #0a1128;
+            background-image: radial-gradient(circle at top right, #1c2541, #0a1128);
+            color: #e2e8f0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        .dashboard-layout {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+        /* Sidebar Styling */
+        .sidebar {
+            width: 280px;
+            background: rgba(28, 37, 65, 0.85);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            padding: 24px 16px;
+            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            height: 100vh;
+            box-sizing: border-box;
+            z-index: 100;
+        }
+        .sidebar-profile {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+        .sidebar-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.2);
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 12px auto;
+            border: 2px solid #38bdf8;
+        }
+        .sidebar-username {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+        .sidebar-role {
+            font-size: 0.8rem;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+        .sidebar-item:hover, .sidebar-item.active {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateX(4px);
+        }
+        .sidebar-footer {
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        /* Main Content Penyesuaian Agar Berada di Samping Sidebar */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        @media (max-width: 900px) {
+            .sidebar {
+                width: 75px;
+                padding: 15px 8px;
+            }
+            .sidebar-profile, .sidebar-item span, .sidebar-role {
+                display: none;
+            }
+            .main-content {
+                margin-left: 75px;
+                padding: 15px;
+            }
+            .sidebar-avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        
+        <!-- SIDEBAR KIRI -->
+        <aside class="sidebar">
+            <div class="sidebar-profile">
+                <div class="sidebar-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="sidebar-username"><span id="sidebarUserName">Pengguna</span></div>
+                <div class="sidebar-role" id="sidebarRoleBadge">Member</div>
+            </div>
+
+            <div class="sidebar-menu">
+                <button class="sidebar-item" onclick="window.location.href='stok.html'">
+                    <i class="fa-solid fa-boxes-stacked" style="width: 20px;"></i>
+                    <span>Informasi Stok</span>
+                </button>
+                <button class="sidebar-item" onclick="window.location.href='Tracking.html'">
+                    <i class="fa-solid fa-truck-fast" style="width: 20px;"></i>
+                    <span>Tracking Pengiriman</span>
+                </button>
+                <button class="sidebar-item" onclick="window.location.href='Checkout.html'">
+                    <i class="fa-solid fa-cart-shopping" style="width: 20px;"></i>
+                    <span>Halaman Pemesanan</span>
+                </button>
+                <button class="sidebar-item" onclick="openMenu('History Transaksi')">
+                    <i class="fa-solid fa-clock-rotate-left" style="width: 20px;"></i>
+                    <span>History Transaksi</span>
+                </button>
+            </div>
+
+            <div class="sidebar-footer">
+                <button class="sidebar-item" onclick="openModal('profileModal')">
+                    <i class="fa-solid fa-user-gear" style="width: 20px;"></i>
+                    <span>Profil Saya</span>
+                </button>
+                <button class="sidebar-item" onclick="handleLogout()" style="color: #f87171;">
+                    <i class="fa-solid fa-right-from-bracket" style="width: 20px;"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- KONTEN UTAMA DASHBOARD -->
+        <div class="main-content">
+            <div class="dashboard-wrapper" style="width: 100%; max-width: 100%;">
+                
+               <!-- Header & Greeting Section -->
+                <header class="greeting-card">
+                    <div class="greeting-info">
+                        <div class="badge-time">
+                            <span id="greetingIcon">☀️</span>
+                            <span id="greetingText">Selamat Pagi</span>
+                        </div>
+                        <!-- Nama pengguna dibuat dinamis dengan ID userName -->
+                        <h1 class="user-name"><span id="userName">Pengguna</span></h1>
+                        <p class="greeting-sub">Selamat datang kembali ke Toko Buku TUTUBookStore! Silakan pilih menu di bawah ini.</p>
+                    </div>
+                    
+                    <!-- Widget Jam Digital Real-time -->
+                    <div class="clock-card">
+                        <div id="liveClock" class="clock-time">00:00:00 WIB</div>
+                        <div id="liveDate" class="clock-date">Sabtu, 7 November 2026</div>
+                    </div>
+                </header>
+
+                <div class="section-title">
+                    <h2>Menu Utama Navigation</h2>
+                </div>
+
+                <!-- KARTU RINGKASAN CEPAT (SUMMARY CARDS) -->
+                <div class="summary-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 25px;">
+                    
+                    <!-- 1. Total Jenis Buku -->
+                    <div class="summary-card" style="background: rgba(28, 37, 65, 0.7); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">Total Jenis Buku</div>
+                            <div id="sumJenisBuku" style="font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-top: 2px;">0</div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Total Keseluruhan Stok -->
+                    <div class="summary-card" style="background: rgba(28, 37, 65, 0.7); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(52, 211, 153, 0.15); color: #34d399; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">Total Stok Buku</div>
+                            <div id="sumTotalStok" style="font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-top: 2px;">0</div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Pengiriman Berjalan -->
+                    <div class="summary-card" style="background: rgba(28, 37, 65, 0.7); border: 1px solid rgba(251, 191, 36, 0.2); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(251, 191, 36, 0.15); color: #fbbf24; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">Pengiriman Berjalan</div>
+                            <div id="sumPengiriman" style="font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-top: 2px;">0</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Toast Notification (Popup Interaktif) -->
+    <div id="toast" class="toast-box">
+        <span id="toastMsg">Menghubungkan ke menu...</span>
+    </div>
+    
+    <!-- ================= MODAL PROFIL & EDIT ================= -->
+    <div id="profileModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Profil Akun Saya</h3>
+                <button class="close-btn" onclick="closeModal('profileModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="profileName">Nama Lengkap</label>
+                    <input type="text" id="profileName" placeholder="Nama Anda">
+                </div>
+                <div class="input-group" style="margin-top: 12px;">
+                    <label for="profileEmail">Email</label>
+                    <input type="email" id="profileEmail" placeholder="email@domain.com">
+                </div>
+                <div class="input-group" style="margin-top: 12px;">
+                    <label for="profileRole">Role Akun</label>
+                    <input type="text" id="profileRole" readonly style="opacity: 0.7; cursor: not-allowed;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('profileModal')">Tutup</button>
+                <button type="button" class="btn-primary" onclick="saveProfileChanges()">Simpan Perubahan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Script Terpisah (Urutan: data.js wajib di atas sebelum script.js) -->
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
