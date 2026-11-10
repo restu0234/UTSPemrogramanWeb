@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Pengiriman - Dark Blue Theme</title>
+    <!-- Menghubungkan ke CSS utama -->
+    <link rel="stylesheet" href="CSS/style.css">
+    
+        
+</head>
+<body>
+
+    <div class="tracking-container">
+        <div class="tracking-header">
+            <h2>📦 Lacak Status Pengiriman</h2>
+            <a href="Menu_Dashboard.html" class="btn-back">← Kembali ke Dashboard</a>
+        </div>
+
+        <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 20px;">Masukkan Nomor Delivery Order (DO) Anda untuk memantau status perjalanan paket secara real-time dari data sistem.</p>
+
+        <!-- Form Input Nomor DO -->
+        <div class="search-box">
+            <input type="text" id="inputNoDO" placeholder="Contoh: 20230012 atau 20230013" required>
+            <button onclick="lacakPengiriman()">Cari</button>
+        </div>
+        <div id="errorMsg" class="error-msg">Nomor Delivery Order tidak ditemukan! Silakan periksa kembali.</div>
+
+        <!-- Kartu Hasil Pencarian -->
+        <div id="resultCard" class="result-card">
+            <div class="status-badge" id="resStatus">Status: Dalam Perjalanan</div>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>Nama Pemesan</label>
+                    <span id="resNama">-</span>
+                </div>
+                <div class="info-item">
+                    <label>Nomor Delivery Order (DO)</label>
+                    <span id="resNoDO">-</span>
+                </div>
+                <div class="info-item">
+                    <label>Ekspedisi & Paket</label>
+                    <span id="resEkspedisi">-</span>
+                </div>
+                <div class="info-item">
+                    <label>Tanggal Kirim</label>
+                    <span id="resTanggal">-</span>
+                </div>
+                <div class="info-item" style="grid-column: span 2;">
+                    <label>Total Pembayaran</label>
+                    <span id="resTotal" style="color: #38bdf8;">-</span>
+                </div>
+            </div>
+
+            <h4 style="color: #38bdf8; margin-bottom: 15px; font-size: 1rem;">Riwayat Perjalanan Paket</h4>
+            <div class="timeline" id="resTimeline">
+                <!-- Data timeline akan dimasukkan via JavaScript DOM -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Panggil data.js dan script.js -->
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
