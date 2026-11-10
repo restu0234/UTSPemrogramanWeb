@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Pemesanan / Checkout - Dark Blue Theme</title>
+    <!-- Menghubungkan ke file CSS utama yang sudah ada -->
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+
+    <div class="checkout-container">
+        <div class="checkout-header">
+            <h2>🛒 Halaman Pemesanan & Checkout</h2>
+            <a href="Menu_Dashboard.html" class="btn-back">← Kembali ke Dashboard</a>
+        </div>
+
+        <form id="formCheckout" onsubmit="prosesCheckout(event)">
+            
+            <!-- Kotak 1: Pilih Produk dari Katalog/Stok -->
+            <div class="section-box">
+                <h3>1. Pilih Produk / Buku Pesanan</h3>
+                <div class="input-group">
+                    <label for="pilihBuku">Pilih Buku dari Katalog</label>
+                    <select id="pilihBuku" onchange="hitungTotal()"  style="background: rgba(11, 19, 43, 0.8); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; padding: 12px; color: #fff; outline: none;">
+                        <option value="">-- Pilih Buku --</option>
+                    </select>
+                </div>
+                <div class="input-group" style="margin-top: 12px;">
+                    <label for="jumlahPesan">Jumlah Pesanan (Pcs)</label>
+                    <input type="number" id="jumlahPesan" value="1" min="1" oninput="hitungTotal()" required>
+                </div>
+            </div>
+
+            <!-- Kotak 2: Informasi Pemesan -->
+            <div class="section-box">
+                <h3>2. Informasi Data Pemesan</h3>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="namaPemesan">Nama Lengkap</label>
+                        <input type="text" id="namaPemesan" placeholder="Nama Anda" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="teleponPemesan">No. Telepon / WhatsApp</label>
+                        <input type="tel" id="teleponPemesan" placeholder="08xxxxxxxxxx" required minlength="10" maxlength="15">
+                    </div>
+                    <div class="input-group form-grid-full">
+                        <label for="alamatPemesan">Alamat Pengiriman Lengkap</label>
+                        <input type="text" id="alamatPemesan" placeholder="Nama Jalan, Kota, Kecamatan, Kode Pos" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kotak 3: Metode Pembayaran -->
+            <div class="section-box">
+                <h3>3. Metode Pembayaran</h3>
+                <div class="input-group">
+                    <label for="metodeBayar">Pilih Pembayaran</label>
+                    <select id="metodeBayar" required style="background: rgba(11, 19, 43, 0.8); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; padding: 12px; color: #fff; outline: none;">
+                        <option value="Transfer Bank BCA">Transfer Bank (BCA)</option>
+                        <option value="Transfer Bank Mandiri">Transfer Bank (Mandiri)</option>
+                        <option value="QRIS / E-Wallet">QRIS / GoPay / OVO</option>
+                        <option value="COD (Bayar di Tempat)">COD (Bayar di Tempat)</option>
+                    </select>
+                </div>
+
+                <div class="total-section">
+                    <span>Total Pembayaran:</span>
+                    <span id="displayTotal" style="color: #38bdf8;">Rp 0</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Konfirmasi & Buat Pesanan</button>
+        </form>
+    </div>
+
+    <!-- Panggil data.js dan script.js -->
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
