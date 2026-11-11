@@ -4,9 +4,10 @@
 * **`Nama`** : Restu Aji Prasetyo
 * **`NIM`**  : 312510034
 * **`Kelas`**: I253C
-* **`Dosen`**:
+* **`Dosen`**: Agung Nugroho S.Kom.,M.Kom.
 
-# Berikut adalah hasil dari Praktikum dengan perubahan step by step nya
+# Berikut adalah hasil dari Praktikum dengan perubahan step by step nya mulai dari pembuatan laman dasar HTML sampai ke Javascript
+# Pada bagian ini kita buat sampai ke tahap pemberian style/css nya
 Langkah Pertama kita membuat bagian halaman dasar login seperti dibawah ini:
 ![Gambar1](img/halaman_login_mentah.png)
 Selanjutnya membuat bagian modal awal untuk tombol untuk permintaan **Lupa Password dan Daftar Akun**
@@ -45,6 +46,7 @@ Pada bagian kelima kita harus membuat dasar untuk halaman **pelacakan status pen
 Setelah itu kita beri stylenya agar lebih menarik untuk dilihat.
 ![Gambar19](img/halaman_tracking_css.png)
  # 
+ # Pada bagian ini kita mulai memberikan javascript dan menghubungkannya dengan data.js yang telah diberikan oleh Dosen
  Selanjutnya setelah pemberiann Script untuk membuat web ini lebih interaktif dan dimanipulasi dengan mengambil data yang ada dari data.js yang telah diberikan, maka sekarang kita lihat tahapan selanjutnya untuk trial.
 Pertama kita coba untuk bagian input Lupa Password seperti dibawah ini.
 ![Gambar20](img/lupa_passwordnya.png)
